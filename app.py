@@ -9,6 +9,8 @@ from langgraph.graph import START, StateGraph
 from langgraph.prebuilt import tools_condition
 from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
 
+import os
+
 # Generate the chat interface, including the tools
 llm = HuggingFaceEndpoint(
     repo_id="Qwen/Qwen2.5-Coder-32B-Instruct",
