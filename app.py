@@ -48,7 +48,7 @@ builder.add_conditional_edges(
 builder.add_edge("tools", "assistant")
 alfred = builder.compile()
 
-messages = [HumanMessage(content="Tell me about our guest named 'Lady Ada Lovelace'.")]
+messages = [HumanMessage(content="Alfred, who is that gentleman talking to the ambassador?")]
 response = alfred.invoke({"messages": messages})
 
 print("🎩 Alfred's Response:")
