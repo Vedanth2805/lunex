@@ -3,4 +3,5 @@ langchain-core
 langchain-community
 langchain-huggingface
 langgraph
+langchain-google-genai
 rank_bm25
