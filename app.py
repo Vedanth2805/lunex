@@ -7,17 +7,17 @@ from langchain_core.messages import AnyMessage, HumanMessage, AIMessage
 from langgraph.prebuilt import ToolNode
 from langgraph.graph import START, StateGraph
 from langgraph.prebuilt import tools_condition
-from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 import os
 
 # Generate the chat interface, including the tools
-llm = HuggingFaceEndpoint(
-    repo_id="Qwen/Qwen2.5-Coder-32B-Instruct",
-    huggingfacehub_api_token=os.environ["HUGGINGFACEHUB_API_TOKEN"]
+chat = ChatGoogleGenerativeAI(
+    model="gemini-3.5-flash-lite",
+    google_api_key=os.environ["GEMINI_API_KEY"]
 )
 
-chat = ChatHuggingFace(llm=llm, verbose=True)
+
 tools = [guest_info_tool]
 chat_with_tools = chat.bind_tools(tools)
 
