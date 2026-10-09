@@ -1,7 +1,9 @@
-datasets
 langchain-core
 langchain-community
-langchain-huggingface
-langgraph
 langchain-google-genai
+langgraph
+ddgs
+huggingface-hub
+datasets
+langchain-huggingface
 rank_bm25
