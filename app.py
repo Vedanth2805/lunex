@@ -69,5 +69,8 @@ builder.add_edge("tools", "assistant")
 alfred = builder.compile()
 
 
+response = alfred.invoke({"messages": "Tell me about 'Lady Ada Lovelace'"})
 
+print("🎩 Alfred's Response:")
+print(response['messages'][-1].content)
 
