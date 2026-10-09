@@ -7,6 +7,12 @@ from langchain_core.messages import AnyMessage, HumanMessage, AIMessage
 from langgraph.prebuilt import ToolNode
 from langgraph.graph import START, StateGraph
 from langgraph.prebuilt import tools_condition
+from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
+
+from tools import DuckDuckGoSearchRun, weather_info_tool, hub_stats_tool
+from retriever import guest_info_tool
+
+
 from langchain_google_genai import ChatGoogleGenerativeAI
 
 import os
@@ -18,7 +24,21 @@ chat = ChatGoogleGenerativeAI(
 )
 
 
-tools = [guest_info_tool]
+
+# Initialize the web search tool
+search_tool = DuckDuckGoSearchRun()
+
+
+
+
+
+
+
+
+
+
+
+tools = [guest_info_tool, search_tool, weather_info_tool, hub_stats_tool]
 chat_with_tools = chat.bind_tools(tools)
 
 # Generate the AgentState and Agent graph
@@ -48,8 +68,6 @@ builder.add_conditional_edges(
 builder.add_edge("tools", "assistant")
 alfred = builder.compile()
 
-messages = [HumanMessage(content="Alfred, who is that gentleman talking to the ambassador?")]
-response = alfred.invoke({"messages": messages})
 
-print("🎩 Alfred's Response:")
-print(response['messages'][-1].content)
+
+
