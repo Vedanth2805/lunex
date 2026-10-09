@@ -1,8 +1,6 @@
 from langchain_community.tools import DuckDuckGoSearchRun
 
 search_tool = DuckDuckGoSearchRun()
-results = search_tool.invoke("Who's the current President of France?")
-print(results)
 
 
 
@@ -59,5 +57,3 @@ hub_stats_tool = Tool(
     description="Fetches the most downloaded model from a specific author on the Hugging Face Hub."
 )
 
-# Example usage
-print(hub_stats_tool.invoke("facebook")) # Example: Get the most downloaded model by Facebook
