@@ -74,3 +74,17 @@ response = alfred.invoke({"messages": "Tell me about 'Lady Ada Lovelace'"})
 print("🎩 Alfred's Response:")
 print(response['messages'][-1].content)
 
+
+
+
+
+
+print()
+
+print()
+
+response = alfred.invoke({"messages": "What's the weather like in Paris tonight? Will it be suitable for our fireworks display?"})
+
+print("🎩 Alfred's Response:")
+print(response['messages'][-1].content)
+
