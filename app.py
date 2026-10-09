@@ -88,3 +88,27 @@ response = alfred.invoke({"messages": "What's the weather like in Paris tonight?
 print("🎩 Alfred's Response:")
 print(response['messages'][-1].content)
 
+
+
+
+
+print()
+
+print()
+
+
+response = alfred.invoke({"messages": "One of our guests is from Qwen. What can you tell me about their most popular model?"})
+
+print("🎩 Alfred's Response:")
+print(response['messages'][-1].content)
+
+
+print()
+print()
+
+
+response = alfred.invoke({"messages":"I need to speak with 'Dr. Nikola Tesla' about recent advancements in wireless energy. Can you help me prepare for this conversation?"})
+
+print("🎩 Alfred's Response:")
+print(response['messages'][-1].content)
+
