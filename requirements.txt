@@ -7,3 +7,4 @@ huggingface-hub
 datasets
 langchain-huggingface
 rank_bm25
+rich

@@ -1,37 +1,15 @@
 from langchain_community.tools import DuckDuckGoSearchRun
 
+
+
+from datetime import datetime, timezone
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
+from langchain_core.tools import tool
+
+
+
+
 search_tool = DuckDuckGoSearchRun()
-
-
-
-
-
-
-
-
-from langchain_core.tools import Tool
-import random
-
-def get_weather_info(location: str) -> str:
-    """Fetches dummy weather information for a given location."""
-    # Dummy weather data
-    weather_conditions = [
-        {"condition": "Rainy", "temp_c": 15},
-        {"condition": "Clear", "temp_c": 25},
-        {"condition": "Windy", "temp_c": 20}
-    ]
-    # Randomly select a weather condition
-    data = random.choice(weather_conditions)
-    return f"Weather in {location}: {data['condition']}, {data['temp_c']}°C"
-
-# Initialize the tool
-weather_info_tool = Tool(
-    name="get_weather_info",
-    func=get_weather_info,
-    description="Fetches dummy weather information for a given location."
-)
-
-
 
 from langchain_core.tools import Tool
 from huggingface_hub import list_models
@@ -57,3 +35,21 @@ hub_stats_tool = Tool(
     description="Fetches the most downloaded model from a specific author on the Hugging Face Hub."
 )
 
+
+
+# date and time tool
+@tool
+def get_current_datetime(timezone_name: str = "UTC") -> str:
+    """Get the current date, time, and UTC offset for an IANA
+    timezone, such as Europe/Paris or Asia/Kolkata.
+    Use UTC if the relevant timezone is unknown."""
+
+    try:
+        now = datetime.now(ZoneInfo(timezone_name))
+        return now.isoformat()
+
+    except (ZoneInfoNotFoundError, ValueError):
+        return (
+            f"Unknown timezone: {timezone_name}. "
+            "Use a valid IANA timezone, such as UTC or Asia/Kolkata."
+        )
